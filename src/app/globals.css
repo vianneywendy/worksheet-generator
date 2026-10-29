@@ -24,3 +24,70 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Select the physical paper size */
+.paper-a4 {
+  page: worksheet-a4;
+}
+
+.paper-a5 {
+  page: worksheet-a5;
+}
+
+@page worksheet-a4 {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@page worksheet-a5 {
+  size: A5 portrait;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    background: white !important;
+  }
+
+  @page {
+    margin: 0;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #worksheet,
+  #worksheet * {
+    visibility: visible !important;
+  }
+
+  #worksheet {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 12mm !important;
+    box-sizing: border-box !important;
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+  }
+
+  #worksheet.paper-a5 {
+    width: 148mm !important;
+    height: 210mm !important;
+  }
+
+  #worksheet .mascot-image {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
